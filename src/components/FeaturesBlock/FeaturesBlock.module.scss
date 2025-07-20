@@ -1,0 +1,53 @@
+.block {
+    gap: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    color: #1f1f1f;
+    font-size: 52px;
+    font-weight: 600;
+    line-height: 98.5%;
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    gap: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.featureList {
+    gap: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.featureItem {
+    display: flex;
+    flex-direction: column;
+}
+
+.featureName {
+    color: #ff4b00;
+    font-size: 48px;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+}
+
+.featureDescription {
+    color: #1f1f1f;
+    font-size: 28px;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+}
+
+.image {
+    height: auto;
+    max-width: 100%;
+}

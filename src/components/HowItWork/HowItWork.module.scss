@@ -1,0 +1,20 @@
+.block {
+    gap: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    font-size: 52px;
+    font-weight: 600;
+    line-height: 98.5%;
+    margin: 0;
+    padding: 0;
+}
+
+.image {
+    width: 100%;
+    height: 706px;
+    object-fit: cover;
+    border-radius: 10px;
+}

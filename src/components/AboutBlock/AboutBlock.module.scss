@@ -1,0 +1,41 @@
+.block {
+    gap: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    color: #1f1f1f;
+    font-size: 52px;
+    font-weight: 600;
+    line-height: 98.5%;
+    margin: 0;
+    padding: 0;
+}
+
+.section {
+    gap: 16px;
+    display: flex;
+    flex-direction: row;
+}
+
+.textWrapper {
+    gap: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.text {
+    color: #1f1f1f;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 150%;
+    letter-spacing: 0.63px;
+}
+
+.image {
+    border-radius: 10px;
+    object-fit: cover;
+    width: 661px; /* Adjusted to match the image size */
+    height: 491px; /* Adjusted to match the image size */
+}
