@@ -1,15 +1,14 @@
 .main {
     gap: 20px;
     display: flex;
-    flex-flow: row wrap;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    flex-direction: row;
+    padding: clamp(0rem, -0.7212rem + 3.2051vw, 3.125rem) 0;
     align-items: center;
     justify-content: space-between;
 }
 
 .infoBlock {
-    gap: 15px;
+    gap: clamp(0rem, -0.2163rem + 0.9615vw, 0.9375rem);
     display: flex;
     max-width: 402px;
     flex-direction: column;
@@ -19,7 +18,7 @@
     color: #ff4b00;
     margin: 0;
     padding: 0;
-    font-size: 120px;
+    font-size: clamp(2.25rem, 1.0385rem + 5.3846vw, 7.5rem);
     font-weight: 700;
 }
 
@@ -27,6 +26,27 @@
     color: #1f1f1f;
     margin: 0;
     padding: 0;
-    font-size: 36px;
+    font-size: clamp(1rem, 0.7115rem + 1.2821vw, 2.25rem);
     font-weight: 500;
+}
+
+.image {
+    width: clamp(14.63rem, 6.7562rem + 34.9949vw, 48.75rem);
+    height: clamp(8.7rem, 4.0154rem + 20.8205vw, 29rem);
+}
+
+@media (width <= 900px) {
+    .main {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .infoBlock {
+        max-width: none;
+    }
+
+    .header,
+    .description {
+        text-align: center;
+    }
 }

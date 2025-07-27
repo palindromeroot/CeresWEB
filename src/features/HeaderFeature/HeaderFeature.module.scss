@@ -6,7 +6,7 @@
     justify-content: center;
     backdrop-filter: blur(30px);
     background-color: rgb(255 255 255 / 59%);
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     right: 0;
@@ -20,7 +20,13 @@
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
-    max-width: 1294px;
+    max-width: clamp(22.5rem, 9.0288rem + 59.8718vw, 80.875rem);
+}
+
+.logo {
+    width: clamp(6rem, 4.8462rem + 5.1282vw, 11rem);
+    height: clamp(2.25rem, 1.8173rem + 1.9231vw, 4.125rem);
+    object-fit: contain;
 }
 
 .navigationWrapper {
@@ -44,7 +50,7 @@
     padding: 10px;
     white-space: nowrap;
     text-decoration: none;
-    font-size: 22px;
+    font-size: clamp(0.875rem, 0.7596rem + 0.5128vw, 1.375rem);
     font-weight: 500;
     color: #1f1f1f;
     position: relative;
@@ -85,5 +91,11 @@
 
     &::before {
         transform: translateX(-5px);
+    }
+}
+
+@media (width <= 1350px) {
+    .navigationWrapper {
+        display: none;
     }
 }

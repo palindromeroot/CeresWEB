@@ -15,15 +15,27 @@ export const UseForBlock: React.FC = () => {
             <h2 className={styles.title}>Для кого подойдёт данное решение</h2>
             <ul className={styles.list}>
                 <li className={styles.item}>
-                    <Image src={useFor1} alt="Агрокомпании" width={58.24} height={127.7} />
+                    <Image src={useFor1} alt="Агрокомпании" width={58.24} height={127.7} className={styles.image} />
                     <span>Агрофирмы с зерновыми и овощными культурами</span>
                 </li>
                 <li className={styles.item}>
-                    <Image src={useFor2} alt="КФХ и хозяйства с площадью обработки от 50 га" width={128} height={128} />
+                    <Image
+                        src={useFor2}
+                        alt="КФХ и хозяйства с площадью обработки от 50 га"
+                        width={128}
+                        height={128}
+                        className={styles.image}
+                    />
                     <span>КФХ и хозяйства с площадью обработки от 50 га</span>
                 </li>
                 <li className={styles.item}>
-                    <Image src={useFor3} alt="Интеграторы технологий точного земледелия" width={128} height={128} />
+                    <Image
+                        src={useFor3}
+                        alt="Интеграторы технологий точного земледелия"
+                        width={128}
+                        height={128}
+                        className={styles.image}
+                    />
                     <span>Интеграторы технологий точного земледелия</span>
                 </li>
             </ul>

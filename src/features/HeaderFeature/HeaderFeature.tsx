@@ -13,7 +13,7 @@ export const HeaderFeature: React.FC = async () => {
     return (
         <header className={styles.header}>
             <div className={styles.wrapper}>
-                <Image src={Logo} alt="Ceres Logo" width={176} height={66} />
+                <Image src={Logo} alt="Ceres Logo" width={176} height={66} className={styles.logo} />
 
                 <nav className={styles.navigationWrapper}>
                     <ul className={styles.navigation}>

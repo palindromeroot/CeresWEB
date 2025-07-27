@@ -5,10 +5,10 @@
     justify-content: center;
     cursor: pointer;
     perspective: 1000px;
-    width: 300px;
-    height: 320px;
-    min-width: 300px;
-    min-height: 320px;
+    width: clamp(9.625rem, 8.024rem + 7.1154vw, 16.5625rem);
+    height: clamp(11.0625rem, 9rem + 9.1667vw, 20rem);
+    min-width: clamp(9.625rem, 8.024rem + 7.1154vw, 16.5625rem);
+    min-height: clamp(11.0625rem, 9rem + 9.1667vw, 20rem);
 }
 
 .cardInner {
@@ -23,6 +23,11 @@
     transform: rotateY(180deg);
 }
 
+.cardIcon {
+    width: clamp(3.75rem, 2.7692rem + 4.359vw, 8rem);
+    height: clamp(3.75rem, 2.7692rem + 4.359vw, 8rem);
+}
+
 .cardFace {
     position: absolute;
     width: 100%;
@@ -33,24 +38,24 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 30px 5px;
+    padding: clamp(0.9375rem, 0.7212rem + 0.9615vw, 1.875rem) 5px;
 }
 
 .iconText {
-    gap: 30px;
+    gap: clamp(1.25rem, 1.1058rem + 0.641vw, 1.875rem);
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
     border: 0.5px solid #d9d9d9;
-    font-size: 28px;
+    font-size: clamp(0.75rem, 0.5192rem + 1.0256vw, 1.75rem);
     font-weight: 400;
     color: #1f1f1f;
     text-align: center;
 }
 
 .moreText {
-    font-size: 28px;
+    font-size: clamp(0.75rem, 0.5192rem + 1.0256vw, 1.75rem);
     font-weight: 400;
     text-align: center;
     background-color: #ff4b00;

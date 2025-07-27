@@ -12,7 +12,7 @@ export const CardItem: React.FC<ICardItemProps> = ({ icon, mainText, moreText })
         <div className={styles.card}>
             <div className={styles.cardInner}>
                 <div className={`${styles.cardFace} ${styles.iconText}`}>
-                    <Image src={icon} alt={mainText} />
+                    <Image src={icon} alt={mainText} className={styles.cardIcon} />
                     <span>{mainText}</span>
                 </div>
                 <div className={`${styles.cardFace} ${styles.moreText}`}>{moreText}</div>

@@ -1,12 +1,12 @@
 .block {
-    gap: 50px;
+    gap: clamp(1.25rem, 0.8173rem + 1.9231vw, 3.125rem);
     display: flex;
     flex-direction: column;
 }
 
 .title {
     color: #1f1f1f;
-    font-size: 52px;
+    font-size: clamp(1.125rem, 0.6346rem + 2.1795vw, 3.25rem);
     font-weight: 600;
     line-height: 98.5%;
     margin: 0;
@@ -21,7 +21,7 @@
 }
 
 .featureList {
-    gap: 50px;
+    gap: clamp(0.625rem, 0.0481rem + 2.5641vw, 3.125rem);
     display: flex;
     flex-direction: column;
 }
@@ -33,7 +33,7 @@
 
 .featureName {
     color: #ff4b00;
-    font-size: 48px;
+    font-size: clamp(1.125rem, 0.6923rem + 1.9231vw, 3rem);
     font-weight: 600;
     margin: 0;
     padding: 0;
@@ -41,13 +41,32 @@
 
 .featureDescription {
     color: #1f1f1f;
-    font-size: 28px;
+    font-size: clamp(0.625rem, 0.3654rem + 1.1538vw, 1.75rem);
     font-weight: 400;
     margin: 0;
     padding: 0;
 }
 
 .image {
-    height: auto;
-    max-width: 100%;
+    width: clamp(14.5rem, 7.75rem + 30vw, 43.75rem);
+    height: clamp(17.875rem, 9.5385rem + 37.0513vw, 54rem);
+    object-fit: cover;
+}
+
+@media (width <= 900px) {
+    .content {
+        align-items: center;
+        flex-direction: column-reverse;
+    }
+
+    .featureList {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, auto);
+    }
+
+    .featureItem {
+        align-items: center;
+        text-align: center;
+    }
 }

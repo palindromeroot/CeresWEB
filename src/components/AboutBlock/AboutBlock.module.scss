@@ -1,12 +1,12 @@
 .block {
-    gap: 50px;
+    gap: clamp(1.25rem, 0.8173rem + 1.9231vw, 3.125rem);
     display: flex;
     flex-direction: column;
 }
 
 .title {
     color: #1f1f1f;
-    font-size: 52px;
+    font-size: clamp(1.125rem, 0.6346rem + 2.1795vw, 3.25rem);
     font-weight: 600;
     line-height: 98.5%;
     margin: 0;
@@ -14,20 +14,20 @@
 }
 
 .section {
-    gap: 16px;
+    gap: clamp(1.25rem, 1.3077rem - 0.2564vw, 1rem);
     display: flex;
     flex-direction: row;
 }
 
 .textWrapper {
-    gap: 50px;
+    gap: clamp(0.625rem, 0.0481rem + 2.5641vw, 3.125rem);
     display: flex;
     flex-direction: column;
 }
 
 .text {
     color: #1f1f1f;
-    font-size: 24px;
+    font-size: clamp(0.625rem, 0.4231rem + 0.8974vw, 1.5rem);
     font-weight: 400;
     line-height: 150%;
     letter-spacing: 0.63px;
@@ -36,6 +36,13 @@
 .image {
     border-radius: 10px;
     object-fit: cover;
-    width: 661px; /* Adjusted to match the image size */
-    height: 491px; /* Adjusted to match the image size */
+    width: clamp(21rem, 16.3125rem + 20.8333vw, 41.3125rem);
+    height: clamp(15.5625rem, 12.0721rem + 15.5128vw, 30.6875rem);
+}
+
+@media (width <= 1350px) {
+    .section {
+        flex-direction: column;
+        align-items: center;
+    }
 }

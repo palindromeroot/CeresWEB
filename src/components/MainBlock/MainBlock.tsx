@@ -15,7 +15,7 @@ export const MainBlock: React.FC = () => {
                 <p className={styles.description}>автономный робот для защиты сельхозугодий от вредителей</p>
             </div>
 
-            <Image src={Robot} alt="Robot" width={720} height={464} />
+            <Image src={Robot} alt="Robot" width={720} height={464} className={styles.image} />
         </div>
     );
 };
