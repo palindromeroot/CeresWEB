@@ -11,7 +11,9 @@ export const MainBlock: React.FC = () => {
     return (
         <div className={styles.main}>
             <div className={styles.infoBlock}>
-                <h1 className={styles.header}>CERES</h1>
+                <h1 id="main" className={styles.header}>
+                    CERES
+                </h1>
                 <p className={styles.description}>автономный робот для защиты сельхозугодий от вредителей</p>
             </div>
 

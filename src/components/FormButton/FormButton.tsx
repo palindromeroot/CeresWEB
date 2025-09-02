@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
@@ -15,6 +16,7 @@ export const FormButton: React.FC = () => {
     const [emailOrPhone, setEmailOrPhone] = useState('');
     const [message, setMessage] = useState('');
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleOpen = (): void => {
         setIsOpen(true);
@@ -44,9 +46,39 @@ export const FormButton: React.FC = () => {
         };
     }, [isOpen]);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent): Promise<void> => {
         e.preventDefault();
-        setIsSubmitted(true);
+
+        if (isSubmitting) return;
+
+        setIsSubmitting(true);
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    organization,
+                    name,
+                    emailOrPhone,
+                    message,
+                }),
+            });
+
+            if (response.ok) {
+                setIsSubmitted(true);
+            } else {
+                console.error('Failed to submit form');
+                // Здесь можно добавить обработку ошибок, например, показать уведомление
+            }
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            // Здесь можно добавить обработку ошибок
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const formComponent = (
@@ -106,19 +138,28 @@ export const FormButton: React.FC = () => {
                             className={`${styles.formInput} ${styles.textarea}`}
                         />
                     </label>
+
+                    <label className={styles.checkboxLabel}>
+                        <input type="checkbox" required className={styles.checkbox} />
+                        <span className={styles.checkboxText}>
+                            Я даю согласие на обработку моих персональных данных в соответствии с{' '}
+                            <Link href="/policy" onClick={handleClose}>
+                                Политикой конфиденциальности
+                            </Link>
+                            .
+                        </span>
+                    </label>
+
                     <div>
                         <button
                             type="submit"
                             className={`${styles.btn} ${styles.formButton}`}
                             style={{ margin: '0 auto' }}
+                            disabled={isSubmitting}
                         >
-                            Оставить заявку
+                            {isSubmitting ? 'Отправка...' : 'Оставить заявку'}
                         </button>
                     </div>
-
-                    <p className={styles.formNote}>
-                        Оставляя заявку, вы соглашаетесь с <a href="#">политикой конфиденциальности</a>
-                    </p>
                 </form>
             ) : (
                 <div className={styles.successContainer}>

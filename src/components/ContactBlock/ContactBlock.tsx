@@ -21,9 +21,7 @@ export const ContactBlock: React.FC = () => {
                     <br />
                     ООО «ЦЕРЕРА»
                     <br />
-                    +7 (918) 543 19 02
-                    <br />
-                    ceres.info@gmail.com
+                    info@ceres-tech.ru
                 </div>
 
                 <Image src={Robot2D} alt="Робот" width={362.73} height={192} className={styles.image} />

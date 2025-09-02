@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 import Logo from '@/assets/logo.svg';
@@ -13,34 +14,36 @@ export const HeaderFeature: React.FC = async () => {
     return (
         <header className={styles.header}>
             <div className={styles.wrapper}>
-                <Image src={Logo} alt="Ceres Logo" width={176} height={66} className={styles.logo} />
+                <Link href="/" className={styles.logo}>
+                    <Image src={Logo} alt="Ceres Logo" width={176} height={66} className={styles.logo} />
+                </Link>
 
                 <nav className={styles.navigationWrapper}>
                     <ul className={styles.navigation}>
                         <li>
-                            <a href="#" className={styles.navigationItem}>
+                            <Link href="/#main" className={styles.navigationItem}>
                                 Главная
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a href="#technology" className={styles.navigationItem}>
+                            <Link href="/#technology" className={styles.navigationItem}>
                                 Технология
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a href="#about" className={styles.navigationItem}>
+                            <Link href="/#about" className={styles.navigationItem}>
                                 О Нас
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a href="#research" className={styles.navigationItem}>
+                            <Link href="/#research" className={styles.navigationItem}>
                                 НИОКР
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a href="#contacts" className={styles.navigationItem}>
+                            <Link href="/#contacts" className={styles.navigationItem}>
                                 Контакты
-                            </a>
+                            </Link>
                         </li>
                     </ul>
                 </nav>

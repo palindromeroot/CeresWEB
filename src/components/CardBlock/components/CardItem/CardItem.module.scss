@@ -36,7 +36,6 @@
     border-radius: 10px;
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
     padding: clamp(0.9375rem, 0.7212rem + 0.9615vw, 1.875rem) 5px;
 }
@@ -46,20 +45,20 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-content: center;
     border: 0.5px solid #d9d9d9;
-    font-size: clamp(0.75rem, 0.5192rem + 1.0256vw, 1.75rem);
+    font-size: clamp(0.6rem, 0.4192rem + 0.9256vw, 1.5rem);
     font-weight: 400;
     color: #1f1f1f;
     text-align: center;
 }
 
 .moreText {
-    font-size: clamp(0.75rem, 0.5192rem + 1.0256vw, 1.75rem);
+    font-size: clamp(0.625rem, 0.4192rem + 0.9256vw, 1.625rem);
     font-weight: 400;
     text-align: center;
     background-color: #ff4b00;
     padding: 5px;
     color: #fff;
     transform: rotateY(180deg);
+    padding-top: 30px;
 }
