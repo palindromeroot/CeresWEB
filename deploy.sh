@@ -27,7 +27,7 @@ if [ -f "./nginx/conf.d/app.conf" ] && grep -q "listen 443" ./nginx/conf.d/app.c
 fi
 
 echo "🏗️  Шаг 3: Сборка и запуск приложения"
-docker compose build --no-cache
+docker compose build
 docker compose up -d
 
 echo "⏳ Ожидание запуска сервисов..."
