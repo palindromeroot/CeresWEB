@@ -61,16 +61,26 @@ docker compose run --rm --entrypoint "\
 if [ $? -eq 0 ]; then
     echo "✅ SSL сертификат получен!"
     
-    echo "🔄 Шаг 5: Переключение на HTTPS конфигурацию"
-    if [ -f "./nginx/conf.d/app-https.conf.bak" ]; then
-        cp ./nginx/conf.d/app-https.conf.bak ./nginx/conf.d/app.conf
-    fi
+    echo "🔄 Шаг 5: Переключение на HTTPS с переадресацией"
+    cp ./nginx/conf.d/app-https-redirect.conf ./nginx/conf.d/app.conf
     
     echo "🔄 Перезапуск nginx..."
     docker compose restart nginx
     
+    echo "⏳ Ожидание перезапуска..."
+    sleep 5
+    
+    echo "🌐 Тестирование переадресации..."
+    if curl -I -m 10 "http://ceres-tech.ru" 2>/dev/null | grep -q "301\|302"; then
+        echo "✅ HTTP переадресация на HTTPS работает!"
+    else
+        echo "⚠️  Переадресация может не работать, проверьте вручную"
+    fi
+    
     echo "🎉 Развертывание завершено!"
-    echo "🌐 Ваш сайт: https://ceres-tech.ru"
+    echo "🌐 Ваш сайт:"
+    echo "   HTTP:  http://ceres-tech.ru  (переадресует на HTTPS)"
+    echo "   HTTPS: https://ceres-tech.ru"
     
 else
     echo "❌ Ошибка получения SSL сертификата!"
@@ -79,9 +89,6 @@ else
     echo "2. Открыты ли порты 80/443"
     echo "3. Логи: docker compose logs nginx"
     
-    # Возвращаем HTTP конфигурацию
-    mv ./nginx/conf.d/app.conf ./nginx/conf.d/app-http-only.conf
-    mv ./nginx/conf.d/app-https.conf.bak ./nginx/conf.d/app.conf
-    
     echo "🌐 Пока сайт работает по HTTP: http://ceres-tech.ru"
+    echo "💡 После исправления проблем запустите: ./enable-https.sh"
 fi
