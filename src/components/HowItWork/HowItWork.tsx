@@ -11,14 +11,12 @@ export const HowItWork: React.FC = () => {
             </h2>
             <iframe
                 className={styles.image}
+                src="https://kinescope.io/embed/dLDiFsmGJ33RUTXrknMXX8"
+                allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;"
+                frameBorder="0"
+                allowFullScreen
                 width="1254"
                 height="706"
-                src="https://www.youtube.com/embed/jwE6tMZTEDY?si=mQrzfmGkB-nDhcoy"
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
             ></iframe>
         </div>
     );
