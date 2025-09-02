@@ -55,7 +55,7 @@ mv ./nginx/conf.d/app.conf ./nginx/conf.d/app-https.conf.disabled
 mv ./nginx/conf.d/app-http-only.conf ./nginx/conf.d/app.conf
 
 # Запустите приложение
-docker-compose up -d
+docker compose up -d
 
 # Проверьте доступность
 curl -I http://ceres-tech.ru
@@ -65,7 +65,7 @@ curl -I http://ceres-tech.ru
 
 ```bash
 # Получение SSL сертификата
-docker-compose run --rm --entrypoint "certbot certonly --webroot -w /var/www/certbot --email your-email@example.com --agree-tos --no-eff-email --non-interactive -d ceres-tech.ru -d www.ceres-tech.ru" certbot
+docker compose run --rm --entrypoint "certbot certonly --webroot -w /var/www/certbot --email your-email@example.com --agree-tos --no-eff-email --non-interactive -d ceres-tech.ru -d www.ceres-tech.ru" certbot
 ```
 
 3. **Включите HTTPS конфигурацию:**
@@ -76,7 +76,7 @@ mv ./nginx/conf.d/app.conf ./nginx/conf.d/app-http-only.conf
 mv ./nginx/conf.d/app-https.conf.disabled ./nginx/conf.d/app.conf
 
 # Перезапустите nginx
-docker-compose restart nginx
+docker compose restart nginx
 ```
 
 ## Полезные команды
@@ -85,42 +85,42 @@ docker-compose restart nginx
 
 ```bash
 # Все сервисы
-docker-compose logs -f
+docker compose logs -f
 
 # Конкретный сервис
-docker-compose logs -f nextjs
-docker-compose logs -f nginx
-docker-compose logs -f certbot
+docker compose logs -f nextjs
+docker compose logs -f nginx
+docker compose logs -f certbot
 ```
 
 ### Перезапуск сервисов
 
 ```bash
 # Перезапуск всех сервисов
-docker-compose restart
+docker compose restart
 
 # Перезапуск конкретного сервиса
-docker-compose restart nextjs
-docker-compose restart nginx
+docker compose restart nextjs
+docker compose restart nginx
 ```
 
 ### Обновление приложения
 
 ```bash
 # Пересборка и перезапуск приложения
-docker-compose build nextjs
-docker-compose up -d nextjs
+docker compose build nextjs
+docker compose up -d nextjs
 
 # Или полная пересборка
-docker-compose down
-docker-compose up -d --build
+docker compose down
+docker compose up -d --build
 ```
 
 ### Обновление SSL сертификатов (вручную)
 
 ```bash
-docker-compose run --rm --entrypoint "certbot certonly --webroot -w /var/www/certbot --email your-email@example.com --agree-tos --no-eff-email --force-renewal -d ceres-tech.ru -d www.ceres-tech.ru" certbot
-docker-compose restart nginx
+docker compose run --rm --entrypoint "certbot certonly --webroot -w /var/www/certbot --email your-email@example.com --agree-tos --no-eff-email --force-renewal -d ceres-tech.ru -d www.ceres-tech.ru" certbot
+docker compose restart nginx
 ```
 
 ## Диагностика проблем
@@ -144,7 +144,7 @@ curl -I http://ceres-tech.ru/.well-known/acme-challenge/test
 3. **Проверьте логи nginx:**
 
 ```bash
-docker-compose logs nginx
+docker compose logs nginx
 ```
 
 ### Docker rate limit
@@ -169,7 +169,7 @@ sudo netstat -tlnp | grep :443
 ### Проверка статуса контейнеров
 
 ```bash
-docker-compose ps
+docker compose ps
 ```
 
 ### Проверка использования ресурсов

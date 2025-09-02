@@ -12,8 +12,6 @@ services:
       - NODE_ENV=production
     networks:
       - app-network
-    depends_on:
-      - nginx
 
   # Nginx reverse proxy
   nginx:
@@ -31,6 +29,8 @@ services:
     command: '/bin/sh -c ''while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g "daemon off;"'''
     networks:
       - app-network
+    depends_on:
+      - nextjs
 
   # Certbot для SSL сертификатов
   certbot:

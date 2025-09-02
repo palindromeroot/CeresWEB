@@ -30,16 +30,16 @@ if [ ! -f "./certbot/conf/live/$DOMAIN/fullchain.pem" ]; then
 fi
 
 echo "🚀 Запуск nginx..."
-docker-compose up -d nginx
+docker compose up -d nginx
 
 # Ждем, пока nginx запустится
 echo "⏳ Ожидание запуска nginx..."
 sleep 5
 
 # Проверяем, что nginx работает
-if ! docker-compose ps nginx | grep -q "Up"; then
+if ! docker compose ps nginx | grep -q "Up"; then
     echo "❌ Ошибка: nginx не запустился!"
-    docker-compose logs nginx
+    docker compose logs nginx
     exit 1
 fi
 
@@ -54,13 +54,13 @@ if ! curl -f -s "http://$DOMAIN/.well-known/acme-challenge/" > /dev/null 2>&1; t
 fi
 
 echo "🗑️  Удаление временного сертификата..."
-docker-compose run --rm --entrypoint "\
+docker compose run --rm --entrypoint "\
     rm -rf /etc/letsencrypt/live/$DOMAIN && \
     rm -rf /etc/letsencrypt/archive/$DOMAIN && \
     rm -rf /etc/letsencrypt/renewal/$DOMAIN.conf" certbot
 
 echo "🏆 Получение SSL сертификата для $DOMAIN..."
-if docker-compose run --rm --entrypoint "\
+if docker compose run --rm --entrypoint "\
     certbot certonly --webroot -w /var/www/certbot \
         --email $EMAIL \
         --agree-tos \
@@ -73,20 +73,20 @@ if docker-compose run --rm --entrypoint "\
     echo "✅ SSL сертификат успешно получен!"
     
     echo "🔄 Перезапуск nginx..."
-    docker-compose restart nginx
+    docker compose restart nginx
     
     echo "🎉 Готово! Ваш сайт доступен по HTTPS!"
     echo "🌐 Проверьте: https://$DOMAIN"
 else
     echo "❌ Ошибка получения SSL сертификата!"
     echo "Проверьте логи certbot:"
-    docker-compose logs certbot
+    docker compose logs certbot
     
     echo "💡 Возможные решения:"
     echo "1. Убедитесь, что домен правильно настроен"
     echo "2. Проверьте DNS записи: dig $DOMAIN"
     echo "3. Убедитесь, что порты 80/443 открыты"
-    echo "4. Проверьте логи nginx: docker-compose logs nginx"
+    echo "4. Проверьте логи nginx: docker compose logs nginx"
     
     exit 1
 fi
