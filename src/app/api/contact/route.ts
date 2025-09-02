@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
 📱 *Контакты:* ${emailOrPhone}
 💬 *Комментарий:* ${message}
 
-📅 *Время:* ${new Date().toLocaleString('ru-RU')}
+📅 *Время:* ${new Date().toLocaleString('ru-RU', { timeZone: 'Europe/Moscow' })}
         `.trim();
 
         // Отправляем сообщение в Telegram
