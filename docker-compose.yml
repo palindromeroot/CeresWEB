@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  # Next.js приложение
+  nextjs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ceresweb-app
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID}
+    networks:
+      - app-network
+    depends_on:
+      - nginx
+
+  # Nginx reverse proxy
+  nginx:
+    image: nginx:alpine
+    container_name: ceresweb-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+    command: '/bin/sh -c ''while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g "daemon off;"'''
+    networks:
+      - app-network
+
+  # Certbot для SSL сертификатов
+  certbot:
+    image: certbot/certbot
+    container_name: ceresweb-certbot
+    restart: unless-stopped
+    volumes:
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  certbot_conf:
+  certbot_www:
