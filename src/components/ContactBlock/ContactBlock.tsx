@@ -21,6 +21,10 @@ export const ContactBlock: React.FC = () => {
                     <br />
                     ООО «ЦЕРЕРА»
                     <br />
+                    ИНН: 6143102770
+                    <br />
+                    ОГРН: 1246100026479
+                    <br />
                     info@ceres-tech.ru
                 </div>
 
