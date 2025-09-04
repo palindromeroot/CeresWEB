@@ -12,7 +12,7 @@ rm -f ./nginx/conf.d/app.conf
 
 # Копируем HTTP-only конфигурацию
 echo "📋 Установка HTTP-only конфигурации..."
-cp ./nginx/conf.d/app-http-only.conf ./nginx/conf.d/app.conf
+cp ./nginx/conf.d/app-http-only.conf.backup ./nginx/conf.d/app.conf
 
 # Пересоздаем сеть (на случай проблем с DNS)
 echo "🌐 Пересоздание Docker сети..."

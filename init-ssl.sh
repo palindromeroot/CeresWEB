@@ -29,6 +29,10 @@ if [ ! -f "./certbot/conf/live/$DOMAIN/fullchain.pem" ]; then
         -subj "/CN=$DOMAIN"
 fi
 
+echo "🚀 Подготовка конфигурации nginx для получения SSL..."
+# Используем HTTP-only конфигурацию для получения SSL
+cp ./nginx/conf.d/app-http-only.conf.backup ./nginx/conf.d/app.conf
+
 echo "🚀 Запуск nginx..."
 docker compose up -d nginx
 
@@ -71,6 +75,10 @@ if docker compose run --rm --entrypoint "\
         -d www.$DOMAIN" certbot; then
     
     echo "✅ SSL сертификат успешно получен!"
+    
+    echo "🔄 Переключение на HTTPS конфигурацию..."
+    # Восстанавливаем основную конфигурацию с HTTPS
+    cp ./nginx/conf.d/app-https-redirect.conf.backup ./nginx/conf.d/app.conf
     
     echo "🔄 Перезапуск nginx..."
     docker compose restart nginx

@@ -16,15 +16,10 @@ echo "📋 Шаг 1: Остановка существующих контейн�
 echo "🔄 Шаг 2: Подготовка к получению SSL сертификатов"
 
 # Убедимся, что используем HTTP-only конфигурацию
-if [ -f "./nginx/conf.d/app-https.conf.bak" ]; then
-    mv ./nginx/conf.d/app-https.conf.bak ./nginx/conf.d/app.conf
-fi
+echo "🔄 Переключаемся на HTTP-only конфигурацию nginx..."
 
-if [ -f "./nginx/conf.d/app.conf" ] && grep -q "listen 443" ./nginx/conf.d/app.conf; then
-    echo "🔄 Переключаемся на HTTP-only конфигурацию nginx..."
-    mv ./nginx/conf.d/app.conf ./nginx/conf.d/app-https.conf.bak
-    cp ./nginx/conf.d/app-http-only.conf ./nginx/conf.d/app.conf
-fi
+# Активируем HTTP-only конфигурацию для получения SSL
+cp ./nginx/conf.d/app-http-only.conf.backup ./nginx/conf.d/app.conf
 
 echo "🏗️  Шаг 3: Сборка и запуск приложения"
 docker compose build
@@ -62,7 +57,8 @@ if [ $? -eq 0 ]; then
     echo "✅ SSL сертификат получен!"
     
     echo "🔄 Шаг 5: Переключение на HTTPS с переадресацией"
-    cp ./nginx/conf.d/app-https-redirect.conf ./nginx/conf.d/app.conf
+    # Восстанавливаем основную конфигурацию с HTTPS
+    cp ./nginx/conf.d/app-https-redirect.conf.backup ./nginx/conf.d/app.conf
     
     echo "🔄 Перезапуск nginx..."
     docker compose restart nginx
