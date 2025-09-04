@@ -28,4 +28,16 @@
     & > * {
         scroll-snap-align: start;
     }
+
+    @media (width >= 1200px) {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        overflow: visible;
+        scroll-snap-type: none;
+        -webkit-overflow-scrolling: initial;
+
+        & > * {
+            scroll-snap-align: initial;
+        }
+    }
 }
