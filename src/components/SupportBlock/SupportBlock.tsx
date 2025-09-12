@@ -1,6 +1,7 @@
 import Image from 'next/image';
 
 import Logo from '@/assets/fond-logo.png';
+import ProjectLogo from '@/assets/main_project-logo.svg';
 
 import styles from './SupportBlock.module.scss';
 
@@ -10,7 +11,16 @@ import styles from './SupportBlock.module.scss';
 export const SupportBlock: React.FC = () => {
     return (
         <div className={styles.block}>
-            <Image src={Logo} alt="Логотип фонда" width={247} height={128} className={styles.logo} />
+            <div className={styles.logos}>
+                <Image src={Logo} alt="Логотип фонда" width={247} height={128} className={styles.logo} />
+                <Image
+                    src={ProjectLogo}
+                    alt="Логотип проекта"
+                    width={165}
+                    height={128}
+                    className={styles.projectLogo}
+                />
+            </div>
 
             <div className={styles.text}>
                 Работа выполнена при поддержке гранта Фонда содействия инновациям, предоставленного в рамках программы
