@@ -27,7 +27,7 @@
 
 .card {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     flex-direction: row;
     justify-content: space-between;
 }
@@ -39,8 +39,8 @@
 }
 
 .image {
-    width: auto;
-    height: 100%;
+    width: clamp(10.9812rem, 8.2837rem + 11.9891vw, 22.6706rem);
+    height: clamp(5.8125rem, 4.3846rem + 6.3462vw, 12rem);
     object-fit: cover;
     transform: scaleX(-1);
 }
