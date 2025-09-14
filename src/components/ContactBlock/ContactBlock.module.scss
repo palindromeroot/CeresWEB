@@ -39,7 +39,8 @@
 }
 
 .image {
-    width: clamp(10.9812rem, 8.2837rem + 11.9891vw, 22.6706rem);
-    height: clamp(5.8125rem, 4.3846rem + 6.3462vw, 12rem);
+    width: auto;
+    height: 100%;
     object-fit: cover;
+    transform: scaleX(-1);
 }

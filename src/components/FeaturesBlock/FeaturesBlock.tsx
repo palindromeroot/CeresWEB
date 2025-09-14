@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import Features from '@/assets/features.png';
+import Features from '@/assets/features.svg';
 
 import styles from './FeaturesBlock.module.scss';
 

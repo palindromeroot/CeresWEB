@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import Logo from '@/assets/fond-logo.png';
+import Logo from '@/assets/fond-logo.svg';
 import ProjectLogo from '@/assets/main_project-logo.svg';
 
 import styles from './SupportBlock.module.scss';
