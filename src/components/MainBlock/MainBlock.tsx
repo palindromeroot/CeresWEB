@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import Robot from '@/assets/robot.png';
+import Robot from '@/assets/robot.webp';
 
 import styles from './MainBlock.module.scss';
 

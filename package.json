@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "BUILD_TARGET=server next build",
     "start": "next start",
+    "build:static": "BUILD_TARGET=static next build",
     "lint": "npm run lint:eslint && npm run lint:stylelint",
     "lint:eslint": "eslint --fix --config eslint.config.mjs 'src/**/*.{js,jsx,ts,tsx}'",
     "lint:stylelint": "stylelint --fix --config stylelint.config.js 'src/**/*.{css,scss}'",

@@ -6,6 +6,8 @@ import { createPortal } from 'react-dom';
 
 import styles from './FormButton.module.scss';
 
+const isStatic = process.env.NEXT_PUBLIC_BUILD_TARGET === 'static';
+
 /**
  * Компонент кнопки открытия формы.
  */
@@ -86,7 +88,7 @@ export const FormButton: React.FC = () => {
             {!isSubmitted ? (
                 <form className={styles.form} onSubmit={handleSubmit}>
                     <div className={styles.formHeader}>
-                        <h2 className={styles.formTitle}>Оставить заявку</h2>
+                        <h2 className={styles.formTitle}>{!isStatic ? 'Оставить заявку' : 'Связаться с нами'}</h2>
                         <button type="button" className={styles.closeButton} onClick={handleClose}>
                             <svg
                                 width="49"
@@ -103,63 +105,78 @@ export const FormButton: React.FC = () => {
                         </button>
                     </div>
 
-                    <label className={styles.formLabel}>
-                        <span>Наименование организации</span>
-                        <input
-                            type="text"
-                            value={organization}
-                            onChange={(e) => setOrganization(e.target.value)}
-                            className={styles.formInput}
-                        />
-                    </label>
-                    <label className={styles.formLabel}>
-                        <span>Контактное лицо</span>
-                        <input
-                            type="text"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            className={styles.formInput}
-                        />
-                    </label>
-                    <label className={styles.formLabel}>
-                        <span>Телефон или email</span>
-                        <input
-                            type="text"
-                            value={emailOrPhone}
-                            onChange={(e) => setEmailOrPhone(e.target.value)}
-                            className={styles.formInput}
-                        />
-                    </label>
-                    <label className={styles.formLabel}>
-                        <span>Комментарий</span>
-                        <textarea
-                            value={message}
-                            onChange={(e) => setMessage(e.target.value)}
-                            className={`${styles.formInput} ${styles.textarea}`}
-                        />
-                    </label>
+                    {!isStatic && (
+                        <>
+                            <label className={styles.formLabel}>
+                                <span>Наименование организации</span>
+                                <input
+                                    type="text"
+                                    value={organization}
+                                    onChange={(e) => setOrganization(e.target.value)}
+                                    className={styles.formInput}
+                                />
+                            </label>
+                            <label className={styles.formLabel}>
+                                <span>Контактное лицо</span>
+                                <input
+                                    type="text"
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
+                                    className={styles.formInput}
+                                />
+                            </label>
+                            <label className={styles.formLabel}>
+                                <span>Телефон или email</span>
+                                <input
+                                    type="text"
+                                    value={emailOrPhone}
+                                    onChange={(e) => setEmailOrPhone(e.target.value)}
+                                    className={styles.formInput}
+                                />
+                            </label>
+                            <label className={styles.formLabel}>
+                                <span>Комментарий</span>
+                                <textarea
+                                    value={message}
+                                    onChange={(e) => setMessage(e.target.value)}
+                                    className={`${styles.formInput} ${styles.textarea}`}
+                                />
+                            </label>
 
-                    <label className={styles.checkboxLabel}>
-                        <input type="checkbox" required className={styles.checkbox} />
-                        <span className={styles.checkboxText}>
-                            Я даю согласие на обработку моих персональных данных в соответствии с{' '}
-                            <Link href="/policy" onClick={handleClose}>
-                                Политикой конфиденциальности
-                            </Link>
-                            .
-                        </span>
-                    </label>
+                            <label className={styles.checkboxLabel}>
+                                <input type="checkbox" required className={styles.checkbox} />
+                                <span className={styles.checkboxText}>
+                                    Я даю согласие на обработку моих персональных данных в соответствии с{' '}
+                                    <Link href="/policy" onClick={handleClose}>
+                                        Политикой конфиденциальности
+                                    </Link>
+                                    .
+                                </span>
+                            </label>
 
-                    <div>
-                        <button
-                            type="submit"
-                            className={`${styles.btn} ${styles.formButton}`}
-                            style={{ margin: '0 auto' }}
-                            disabled={isSubmitting}
-                        >
-                            {isSubmitting ? 'Отправка...' : 'Оставить заявку'}
-                        </button>
-                    </div>
+                            <div>
+                                <button
+                                    type="submit"
+                                    className={`${styles.btn} ${styles.formButton}`}
+                                    style={{ margin: '0 auto' }}
+                                    disabled={isSubmitting}
+                                >
+                                    {isSubmitting ? 'Отправка...' : 'Оставить заявку'}
+                                </button>
+                            </div>
+                        </>
+                    )}
+
+                    {isStatic && (
+                        <div className={`${styles.formLabel} ${styles.checkboxText}`} style={{ alignItems: 'center' }}>
+                            <span>
+                                Мы открыты к обратной связи и предложениям по сотрудничеству. Свяжитесь с нами по почте:
+                            </span>
+                            <a href="mailto:info@ceres-tech.ru" className={styles.emailLink}>
+                                info@ceres-tech.ru
+                            </a>
+                        </div>
+                    )}
                 </form>
             ) : (
                 <div className={styles.successContainer}>

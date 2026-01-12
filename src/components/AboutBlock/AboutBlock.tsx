@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import Team from '@/assets/team.jpg';
+import Team from '@/assets/team.webp';
 
 import styles from './AboutBlock.module.scss';
 
