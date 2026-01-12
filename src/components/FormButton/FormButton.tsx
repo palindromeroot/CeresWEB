@@ -168,7 +168,7 @@ export const FormButton: React.FC = () => {
                     )}
 
                     {isStatic && (
-                        <div className={`${styles.formLabel} ${styles.checkboxText}`} style={{ alignItems: 'center' }}>
+                        <div className={`${styles.formLabel} ${styles.checkboxText}`} style={{ textAlign: 'center' }}>
                             <span>
                                 Мы открыты к обратной связи и предложениям по сотрудничеству. Свяжитесь с нами по почте:
                             </span>
