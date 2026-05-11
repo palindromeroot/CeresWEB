@@ -19,12 +19,6 @@ export const ContactBlock: React.FC = () => {
                 <div className={styles.text}>
                     <Image src={Logo} alt="Логотип" width={176} height={66} className={styles.logo} />
                     <br />
-                    ООО «ЦЕРЕРА»
-                    <br />
-                    ИНН: 6143102770
-                    <br />
-                    ОГРН: 1246100026479
-                    <br />
                     info@ceres-tech.ru
                 </div>
 

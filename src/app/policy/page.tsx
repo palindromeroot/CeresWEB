@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { redirect } from 'next/navigation';
 
 export const metadata: Metadata = {
     robots: {
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
  * Страница политики конфиденциальности.
  */
 export default function Policy(): React.ReactNode {
+    redirect('/');
     return (
         <div className="max-w-4xl mx-auto p-6 prose prose-lg">
             <h1 className="text-3xl font-bold mb-6">Политика конфиденциальности персональных данных</h1>
